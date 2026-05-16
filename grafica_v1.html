@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link type="text/css" rel="stylesheet" href="style.css" />
+    </head>
+
+    <body>
+        <main>
+            <h2>Ejemplo Kike</h2>
+            <h3>Datos de diferentes personas en el salon</h3>
+            <!--Este es el de grafica de barras-->
+            <!--Este de svg es el tamanio de la imagen-->
+            <svg width="500" height="700" style="background-color: #e1e5e6;">
+
+                <text x="200" y="40" font-family="sans-serif">Estatura</text>
+                <!--Estas son las barras grises claro del fondo-->
+                <rect x="100" y="50" width="200" height="20" rx="5" ry="5" fill="#4AE38F"></rect>
+                <rect x="100" y="75" width="200" height="20" rx="5" ry="5" fill="#4AE38F"></rect>
+                <rect x="100" y="100" width="200" height="20" rx="5" ry="5" fill="#4AE38F"></rect>
+                <rect x="100" y="125" width="200" height="20" rx="5" ry="5" fill="#4AE38F"></rect>
+                <rect x="100" y="150" width="200" height="20" rx="5" ry="5" fill="#4AE38F"></rect>
+
+                <!--Estos son las barras de color que dicen la altura en el width porque son horizontales-->
+                <!--x y y son las coordenadas-->
+                <rect x="100" y="50" width="160" height="20" rx="5" ry="5" fill="#168D4C"></rect>
+                <rect x="100" y="75" width="168" height="20" rx="5" ry="5" fill="#168D4C"></rect>
+                <rect x="100" y="100" width="155" height="20" rx="5" ry="5" fill="#168D4C"></rect>
+                <rect x="100" y="125" width="172" height="20" rx="5" ry="5" fill="#168D4C"></rect>
+                <rect x="100" y="150" width="178" height="20" rx="5" ry="5" fill="#168D4C"></rect>
+
+                <text x="315" y="65" font-family="sans-serif"> 1.60 metros </text>
+                <text x="315" y="90" font-family="sans-serif"> 1.68 metros </text>
+                <text x="315" y="115" font-family="sans-serif"> 1.55 metros </text>
+                <text x="315" y="140" font-family="sans-serif"> 1.72 metros </text>
+                <text x="315" y="165" font-family="sans-serif"> 1.78 metros </text>
+
+
+                <text x="200" y="330" font-family="sans-serif">Genero</text>
+                <!--ahora es la grafica circular-->
+                <circle cx="-200" cy="180" r="40" fill="transparent" stroke="#E9BF72" stroke-width="20" 
+                stroke-dasharray="150.6 251" transform="rotate(-90 100 100)" />
+
+                <circle cx="-200" cy="180" r="40" fill="transparent" stroke="#B57F1C" stroke-width="20" 
+                stroke-dasharray="100.4 251" stroke-dashoffset="-150.6" transform="rotate(-90 100 100)" />
+
+                <text x="250" y="390" font-family="sans-serif" fill="#E9BF72" font-weight="bold"> 3 Mujeres </text>
+                <text x="250" y="420" font-family="sans-serif" fill="#B57F1C" font-weight="bold"> 2 Hombres </text>
+            </svg>
+
+            <!--aqui va la grafica de pintos y lineas-->
+            <svg width="700" height="700" style="background-color: #e1e5e6;">
+                <text x="300" y="40" font-family="sans-serif">Promedios</text>
+
+                <!--linea de la grafica vertical-->
+                <line x1="100" y1="100" x2="100" y2="500" stroke="#cdcdcd"></line>
+
+                <text x="70" y="505" font-family="sans-serif" font-size="12">0</text>
+                <text x="70" y="405" font-family="sans-serif" font-size="12">5</text>
+                <text x="70" y="305" font-family="sans-serif" font-size="12">10</text>
+                <text x="70" y="205" font-family="sans-serif" font-size="12">15</text>
+                <text x="70" y="105" font-family="sans-serif" font-size="12">20</text>
+
+                <line x1="95" y1="400" x2="100" y2="400" stroke="#cdcdcd"></line>
+                <line x1="95" y1="300" x2="100" y2="300" stroke="#cdcdcd"></line>
+                <line x1="95" y1="200" x2="100" y2="200" stroke="#cdcdcd"></line>
+                <line x1="95" y1="100" x2="100" y2="100" stroke="#cdcdcd"></line>
+
+                <!--linea de la grafica horizontal-->
+                <line x1="100" y1="500" x2="600" y2="500" stroke="#cdcdcd"></line>
+
+                <text x="100" y="525" font-family="sans-serif" font-size="12">0</text>
+                <text x="200" y="525" font-family="sans-serif" font-size="12">1</text>
+                <text x="300" y="525" font-family="sans-serif" font-size="12">2</text>
+                <text x="400" y="525" font-family="sans-serif" font-size="12">3</text>
+                <text x="500" y="525" font-family="sans-serif" font-size="12">4</text>
+                <text x="600" y="525" font-family="sans-serif" font-size="12">5</text>
+
+                <!--Aqui van los puntos de los datos-->
+                <polyline points="200, 310 300, 350 400, 360 500, 330 600, 340"
+                fill="transparent" stroke="#ed0d0ee3" stroke-width="2"></polyline>
+
+                <!--aqui va la linea de la grafica-->
+                <text x="200" y="300" font-family="sans-serif" font-size="12" fill="#c93030" text-anchor="middle">9.7</text>
+                <text x="300" y="328" font-family="sans-serif" font-size="12" fill="#c93030" text-anchor="middle">8.3</text>
+                <text x="400" y="330" font-family="sans-serif" font-size="12" fill="#c93030" text-anchor="middle">8.1</text>
+                <text x="500" y="306" font-family="sans-serif" font-size="12" fill="#c93030" text-anchor="middle">9.4</text>
+                <text x="600" y="310" font-family="sans-serif" font-size="12" fill="#c93030" text-anchor="middle">9.2</text>
+            </svg>
+        </main>
+    </body>
+
+
+
+</html>
