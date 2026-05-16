@@ -43,6 +43,8 @@ function setup(){ //crea los lienzos y los pinceles
         y el resultado lo divide entre el numero total de registros en el arreglo de datos
         para que se acomoden solas*/
 
+    agregarTextos() //se agregan los textos de ALTURA y EDAD de la tabla
+
     //recorrer el arreglo "datos" desde el 0 al final
     for(let i = 0; i < datos.length; i++){
         const d = datos[i];
@@ -84,7 +86,9 @@ function dibujarRectangulo(dato, i, ancho, escalaY, colorObj){
         .attr("text-anchor", "middle")
         .style("font-family", "sans-serif")
         .text(dato.edad);
+}
 
+function agregarTextos(){
     svg
         .append("text")
         .attr("x", width_espacio-80) //hasta la derecha
