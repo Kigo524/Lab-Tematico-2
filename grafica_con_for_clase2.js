@@ -22,25 +22,31 @@ const arreglo = [
 ];
 
 //En D3, para poner texto necesitas definir la posición x y y (donde empieza la letra) y usar .text() para escribir el contenido
-function setup(){
+function setup(){ //crea los lienzos y los pinceles
     svg = d3
-        .select("#contenedor")
-        .append("svg")
+        .select("#contenedor") //busca el html con el id de "contenedor" usando d3.select()
+        .append("svg") //luego mete una etiqueta svg dentro del contenedor
         .attr("width", width_espacio)
         .attr("height", height_espacio)
         .style("background", "#f9f9f9");
     
     //definicion automatica para la estatura (lo de y)
-    const escalaY = d3.scaleLinear()
-        .domain([0, 2])     //los datos van de 0 a 2
-        .range([height_espacio, 0]);   //en svg esta invertida entonces tenemos que definir que empiece en 0
+    const escalaY = d3.scaleLinear() //mapea los datos reales a pixeles de la pantalla
+        .domain([0, 2])     //los datos van de 0 a 2 como limites (metros)
+        .range([height_espacio, 0]);
+        /*al ponerlo .range de height a 0, le decimos que si la estatura es 0, que lo ponga hasta height_espacio
+        y si la estatura es 2, que lo ponga hasta el tope del lienzo que es 0.
+        Sino, crecerian como estalactitas. */
     
     const anchoBarra = (width_espacio - 100) / datos.length; //dejo espacio a la derecha para poner los atributos
+        /*Basicamente toma el ancho total del lienzo (width_espacio) de 1200 y le resta 100 para dejar el espacio de la derecha
+        y el resultado lo divide entre el numero total de registros en el arreglo de datos
+        para que se acomoden solas*/
 
     //recorrer el arreglo "datos" desde el 0 al final
     for(let i = 0; i < datos.length; i++){
         const d = datos[i];
-        const color = arreglo[0]; //para sacar el color
+        const color = arreglo[0]; //para sacar el color si es que se quiere poner un patron de color
 
         //aqui llamo a la funcion para dibujar, pasando el dato y su posición
         dibujarRectangulo(d, i, anchoBarra, escalaY, color);
