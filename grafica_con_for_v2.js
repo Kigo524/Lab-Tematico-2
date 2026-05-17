@@ -14,7 +14,7 @@ const width_espacio = 1200;
 const height_espacio = 600;
 
 //configuracion de colores para las barras 
-const color = { fill: rgb(13, 120, 227), stroke: rgb(20,40,60)}
+const color = { fill: "rgb(13, 120, 227)", stroke: "rgb(20,40,60)"}
 
 function setup(){
     //para crear el lienzo
@@ -34,8 +34,9 @@ function setup(){
         .range([lineaBase, 30]) //para que a altura sea desde la base hsata 30 pixeles antes del tope
     
     //AQUI LA LOGICA PARA AGRUPAR POR EDADES. uso un ordenamiento de js
-    datos.sort((a,b) => a.edad, b.edad); //entiendo que los ordena de forma ascendente 
+    datos.sort((a,b) => a.edad - b.edad); //entiendo que los ordena de forma ascendente 
     //https://d3js.org/d3-array/sort#sort
+    //esto lo pregunto a la IA porque no me funcionaba con "," y me dijo que con "-" pero no entiendo porques
 
     //y ahora para ordenar esos datos por grupo de forma visual
     let xActual = 50; //posicion de la primera barra de la izquierda
@@ -52,8 +53,10 @@ function setup(){
             xActual += espacioEntreGrupos; //aqui se hace el salto de grupo
         }
 
+        const esPrimerDatoDeGrupo = (d.edad != edadAnterior);
+
         //eso dibuja una barra
-        dibujarRectangulo(d, xActual, anchoBarra, escalaY, color);
+        dibujarRectangulo(d, xActual, anchoBarra, escalaY, color, esPrimerDatoDeGrupo, lineaBase);
 
         //ahora se avanza el espacio entre barras
         xActual += anchoBarra + espacioEntreBarras;
@@ -64,7 +67,7 @@ function setup(){
 
     svg.append("text")
         .attr("x", width_espacio - 110)
-        .attr("y", baseGrafica + 35)
+        .attr("y", lineaBase + 35)
         .style("font-family", "sans-serif")
         .style("font-weight", "bold")
         .text("EJE: EDAD");
@@ -77,11 +80,11 @@ function setup(){
         .text("EJE: ALTURA");
 }
 
-function dibujarRectangulo(dato, x, ancho, escalaY, color, lineaBase){
+function dibujarRectangulo(d, xActual, anchoBarra, escalaY, color, esPrimerDatoDeGrupo, lineaBase){
     svg .append("rect")
-        .attr("x", x)
+        .attr("x", xActual)
         .attr("y", escalaY(dato.estatura)) //dice donde empieza el rectangulo de arriba a abajo
-        .attr("width", ancho)
+        .attr("width", anchoBarra)
         .attr("height", lineaBase - escalaY(dato.estatura)) //queda: la base menos el tope superior para que se ajuste
         .attr("fill", color.fill)
         .attr("stroke", color.stroke)
@@ -95,6 +98,17 @@ function dibujarRectangulo(dato, x, ancho, escalaY, color, lineaBase){
         .style("font-family", "sans-serif")
         .style("font-size", "11px")
         .text(dato.estatura);
+
+    if(esPrimerDatoDeGrupo){
+        svg .append("text")
+            .attr("x", x)
+            .attr("y", lineaBase + 35) //abajo de la linea base
+            .style("font-family", "sans-serif")
+            .style("font-size", "14px")
+            .style("font-weight", "bold")
+            .style("fill", "#333")
+            .text(dato.edad + " años");
+    }
 }
 
 setup();
