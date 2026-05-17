@@ -6,11 +6,14 @@ const datos = [
     { edad: 20, estatura: 1.72 }, { edad: 22, estatura: 1.78 },
     { edad: 19, estatura: 1.75 }, { edad: 21, estatura: 1.77 },
     { edad: 28, estatura: 1.76 }, { edad: 19, estatura: 1.79 },
-    { edad: 22, estatura: 1.85 }
+    { edad: 22, estatura: 1.85 }, { edad: 21, estatura: 1.73 },
+    { edad: 24, estatura: 1.65 }, { edad: 21, estatura: 1.58 },
+    { edad: 42, estatura: 1.64 }, { edad: 17, estatura: 1.64 },
+    { edad: 20, estatura: 1.52 }, { edad: 25, estatura: 1.56 }
 ];
 
 let svg=null;
-const width_espacio = 1200;
+const width_espacio = 1350;
 const height_espacio = 600;
 
 //configuracion de colores para las barras 
@@ -66,18 +69,19 @@ function setup(){
     }
 
     svg.append("text")
-        .attr("x", width_espacio - 110)
-        .attr("y", lineaBase + 35)
+        .attr("x", xActual / 2) 
+        .attr("text-anchor", "middle")
+        .attr("y", lineaBase + 55) // Un poco más abajo para no chocar con los años
         .style("font-family", "sans-serif")
         .style("font-weight", "bold")
         .text("EJE: EDAD");
 
     svg.append("text")
-        .attr("x", width_espacio - 110)
-        .attr("y", 40)
+        .attr("x", 20) //uso xActual para que varie la distancia de las etiquetas
+        .attr("y", 25)
         .style("font-family", "sans-serif")
         .style("font-weight", "bold")
-        .text("EJE: ALTURA");
+        .text("EJE: ALTURA (m)");
 }
 
 function dibujarRectangulo(dato, x, ancho, escalaY, color, esPrimerDatoDeGrupo, lineaBase){
