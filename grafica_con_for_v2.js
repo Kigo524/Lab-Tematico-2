@@ -53,7 +53,7 @@ function setup(){
             xActual += espacioEntreGrupos; //aqui se hace el salto de grupo
         }
 
-        const esPrimerDatoDeGrupo = (d.edad != edadAnterior);
+        const esPrimerDatoDeGrupo = (d.edad !== edadAnterior);
 
         //eso dibuja una barra
         dibujarRectangulo(d, xActual, anchoBarra, escalaY, color, esPrimerDatoDeGrupo, lineaBase);
@@ -80,11 +80,11 @@ function setup(){
         .text("EJE: ALTURA");
 }
 
-function dibujarRectangulo(d, xActual, anchoBarra, escalaY, color, esPrimerDatoDeGrupo, lineaBase){
+function dibujarRectangulo(dato, x, ancho, escalaY, color, esPrimerDatoDeGrupo, lineaBase){
     svg .append("rect")
-        .attr("x", xActual)
+        .attr("x", x)
         .attr("y", escalaY(dato.estatura)) //dice donde empieza el rectangulo de arriba a abajo
-        .attr("width", anchoBarra)
+        .attr("width", ancho)
         .attr("height", lineaBase - escalaY(dato.estatura)) //queda: la base menos el tope superior para que se ajuste
         .attr("fill", color.fill)
         .attr("stroke", color.stroke)
